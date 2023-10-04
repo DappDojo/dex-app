@@ -1,9 +1,11 @@
-import erc20Abi from "./abis/erc20.json";
-import ownableAbi from "./abis/ownable.json";
+import token from "./abis/Token.json";
+import factory from "./abis/LiquidityPoolFactory.json";
+import pool from "./abis/LiquidityPool.json";
+import router from "./abis/DexPoolRouter.json";
 
-const abis = {
-  erc20: erc20Abi,
-  ownable: ownableAbi,
+export default {
+  token,
+  factory,
+  router,
+  pool
 };
-
-export default abis;
