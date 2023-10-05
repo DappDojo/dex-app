@@ -9,6 +9,7 @@ const AmountOut = ({ fromToken, toToken, amountIn, poolContract, currencyValue, 
   const [showList, setShowList] = useState(false);
   const [activeCurrency, setActiveCurrency] = useState("Select");
   const ref = useRef()
+  console.log("poolContract: ", poolContract)
 
   const amountOut = useAmountsOut(poolContract, amountIn, fromToken, toToken) ?? 0;
   useOnClickOutside(ref, () => setShowList(false))
