@@ -3,8 +3,7 @@ import { Contract } from "@ethersproject/contracts";
 import { abis } from "@my-app/contracts";
 import { useCall } from "@usedapp/core";
 import { useEffect } from "react";
-import { BigNumber, ethers } from 'ethers';
-import { formatUnits, parseUnits } from "ethers/lib/utils";
+import { parseUnits } from "ethers/lib/utils";
 
 import { ROUTER_ADDRESS } from "../config";
 
@@ -75,32 +74,29 @@ export const getSuccessMessage = (swapApproveState, swapExecuteState) => {
   return undefined;
 };
 
-export const useAmountsOut = (pairAddress, amountIn, fromToken, toToken) => {
+export const useAmountsOut = (poolAddress, amountIn, fromToken, toToken) => {
   const isValidAmountIn = amountIn.gt(parseUnits("0"));
-  const areParamsValid = !!(pairAddress && isValidAmountIn && fromToken && toToken);
+  const areParamsValid = !!(poolAddress && isValidAmountIn && fromToken && toToken);
 
-  console.log("amountIn: ", amountIn);
   const { error, value } =
    useCall(
-      areParamsValid && {
+        areParamsValid && {
         contract: new Contract(ROUTER_ADDRESS, abis.router.abi),
         method: "getTokenAmountOut",
         args: [fromToken, toToken, amountIn],
       }
     ) ?? {};
-  
+  console.log("error: ", error);
   let temp;
-  if(typeof value === "undefined")
-    temp = parseUnits("0"); //console.log("detected")
+  if(typeof value == "undefined") {
+    temp = parseUnits("0"); 
+    console.log("detected");
+  }
   else
     temp = value?.amountOut;
 
-  //amountIn == 0 ? temp = console.log("In"): console.log("VALUE: ", temp);
+  console.log("Amount out: ", value?.amountOut);
 
-  ;
-  //return error ? parseUnits("0") : ethers.utils.formatEther(value?.amounts[1] );
-
-  //return error ? parseUnits("0") : value?.amounts[1];
   return error ? parseUnits("0") : temp;
 }
 

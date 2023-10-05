@@ -1,5 +1,5 @@
 import { abis } from "@my-app/contracts";
-import { getPairsInfo } from "./getPairsInfo";
+import { getPoolsInfo } from "./getPoolsInfo";
 
 export const getFactoryInfo = async (factoryAddress, web3) => {
   const factory = new web3.eth.Contract(abis.factory.abi, factoryAddress);
@@ -7,15 +7,14 @@ export const getFactoryInfo = async (factoryAddress, web3) => {
   const factoryInfo = {
     /*feeTo: await factory.methods.feeTo().call(),
     feeToSetter: await factory.methods.feeToSetter().call(), */
-    allPairsLength: await factory.methods.allPairsLength().call(),
-    allPairs: [],
+    allPoolsLength: await factory.methods.allPoolsLength().call(),
+    allPools: [],
   };
   
-  for (let i = 0; i < factoryInfo.allPairsLength; i++) {
-    factoryInfo.allPairs[i] = await factory.methods.allPairs(i).call();
+  for (let i = 0; i < factoryInfo.allPoolsLength; i++) {
+    factoryInfo.allPools[i] = await factory.methods.allPools(i).call();
   }
 
-  factoryInfo.pairsInfo = await getPairsInfo(factoryInfo.allPairs, web3);
-  console.log( " factoryInfo.pairsInfo", factoryInfo.pairsInfo);
+  factoryInfo.poolsInfo = await getPoolsInfo(factoryInfo.allPools, web3);
   return factoryInfo;
 }
