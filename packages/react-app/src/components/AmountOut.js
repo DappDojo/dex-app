@@ -5,12 +5,12 @@ import { chevronDown } from "../assets";
 import { useAmountsOut, useOnClickOutside } from "../utils";
 import styles from "../styles";
 
-const AmountOut = ({ fromToken, toToken, amountIn, pairContract, currencyValue, onSelect, currencies }) => {
+const AmountOut = ({ fromToken, toToken, amountIn, poolContract, currencyValue, onSelect, currencies }) => {
   const [showList, setShowList] = useState(false);
   const [activeCurrency, setActiveCurrency] = useState("Select");
   const ref = useRef()
 
-  const amountOut = useAmountsOut(pairContract, amountIn, fromToken, toToken) ?? 0;
+  const amountOut = useAmountsOut(poolContract, amountIn, fromToken, toToken) ?? 0;
   useOnClickOutside(ref, () => setShowList(false))
 
   useEffect(() => {
