@@ -22,7 +22,7 @@ const Exchange = ({ pools }) => {
   const fromValueBigNumber = parseUnits(fromValue || "0"); // converse the string to bigNumber
   const availableTokens = getAvailableTokens(pools);
   const counterpartTokens = getCounterpartTokens(pools, fromToken);
-  const pairAddress = findPoolByTokens(pools, fromToken, toToken)?.address ?? "";
+  const poolAddress = findPoolByTokens(pools, fromToken, toToken)?.address ?? "";
 
   const routerContract = new Contract(ROUTER_ADDRESS, abis.router.abi);
   const fromTokenContract = new Contract(fromToken, ERC20.abi);
@@ -43,7 +43,7 @@ const Exchange = ({ pools }) => {
   // swap initiating a contract call (similar to use state) -> gives the state and the sender...
   const { state: swapExecuteState, send: swapExecuteSend } =
     useContractFunction(routerContract, "swapTokenToToken", {
-      transactionName: "swapExactTokensForTokens",
+      transactionName: "swapTokenToToken",
       gasLimitBufferPercentage: 10,
     });
 
@@ -63,7 +63,8 @@ const Exchange = ({ pools }) => {
     swapExecuteSend(
       fromToken,
       toToken,
-      fromValueBigNumber
+      fromValueBigNumber,
+      0
     ).then((_) => {
       setFromValue("0");
     });
@@ -115,7 +116,7 @@ const Exchange = ({ pools }) => {
           fromToken={fromToken}
           toToken={toToken}
           amountIn={fromValueBigNumber}
-          pairContract={pairAddress}
+          poolContract={poolAddress}
           currencyValue={toToken}
           onSelect={onToTokenChange}
           currencies={counterpartTokens}

@@ -1,4 +1,5 @@
 {
+
 "abi": [
     {
       "inputs": [
@@ -224,37 +225,6 @@
         },
         {
           "indexed": false,
-          "internalType": "uint256",
-          "name": "_amountIn",
-          "type": "uint256"
-        },
-        {
-          "indexed": false,
-          "internalType": "address",
-          "name": "_tokenIn",
-          "type": "address"
-        },
-        {
-          "indexed": false,
-          "internalType": "address",
-          "name": "_poolAddress",
-          "type": "address"
-        }
-      ],
-      "name": "LogSwapTokensForETH",
-      "type": "event"
-    },
-    {
-      "anonymous": false,
-      "inputs": [
-        {
-          "indexed": false,
-          "internalType": "address",
-          "name": "_sender",
-          "type": "address"
-        },
-        {
-          "indexed": false,
           "internalType": "address",
           "name": "_tokenIn",
           "type": "address"
@@ -290,7 +260,38 @@
           "type": "uint256"
         }
       ],
-      "name": "LogswapTokenToToken",
+      "name": "LogSwapTokenToToken",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "_amountIn",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_tokenIn",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "_poolAddress",
+          "type": "address"
+        }
+      ],
+      "name": "LogSwapTokensForETH",
       "type": "event"
     },
     {
@@ -439,6 +440,30 @@
     {
       "inputs": [
         {
+          "internalType": "uint256",
+          "name": "_amountIn",
+          "type": "uint256"
+        }
+      ],
+      "name": "getAmountIn",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "_ownerFees",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountIn",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "address",
           "name": "_tokenIn",
           "type": "address"
@@ -454,7 +479,7 @@
           "type": "uint256"
         }
       ],
-      "name": "getTokenAmountOut",
+      "name": "getPoolAmountOut",
       "outputs": [
         {
           "internalType": "uint256",

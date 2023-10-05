@@ -25,7 +25,6 @@ export const getCounterpartTokens = (pools, fromToken) => pools
     return prev;
   }, {});
 
-
 export const findPoolByTokens = (pools, fromToken, toToken) => {
   if (!Array.isArray(pools) || !fromToken || !toToken) return undefined;
 
@@ -78,14 +77,23 @@ export const useAmountsOut = (poolAddress, amountIn, fromToken, toToken) => {
   const isValidAmountIn = amountIn.gt(parseUnits("0"));
   const areParamsValid = !!(poolAddress && isValidAmountIn && fromToken && toToken);
 
+  console.log("poolAddress: ", poolAddress);
+  console.log("isValidAmountIn: ", isValidAmountIn);
+  console.log("fromToken: ", fromToken);
+  console.log("fromToken: ", toToken);
+
+  console.log("ROUTER_ADDRESS: ", ROUTER_ADDRESS);
+
+  // Check this in Pool: getTokenAmountOut
   const { error, value } =
    useCall(
         areParamsValid && {
         contract: new Contract(ROUTER_ADDRESS, abis.router.abi),
-        method: "getTokenAmountOut",
+        method: "getPoolAmountOut",
         args: [fromToken, toToken, amountIn],
       }
     ) ?? {};
+
   console.log("error: ", error);
   let temp;
   if(typeof value == "undefined") {
