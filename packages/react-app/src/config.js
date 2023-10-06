@@ -1,6 +1,6 @@
 import { Sepolia } from "@usedapp/core";
 
-export const ROUTER_ADDRESS = "0x65983431d26FdfC8f1A6A9A03732C050A95D3Ee1";
+export const ROUTER_ADDRESS = "0xDcC0FD6FEC01B50c560eA3E749322F1D9f9C6ec3";
 
 export const DAPP_CONFIG = {
   readOnlyChainId: Sepolia.chainId,

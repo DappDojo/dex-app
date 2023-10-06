@@ -80,11 +80,8 @@ export const useAmountsOut = (poolAddress, amountIn, fromToken, toToken) => {
   console.log("poolAddress: ", poolAddress);
   console.log("isValidAmountIn: ", isValidAmountIn);
   console.log("fromToken: ", fromToken);
-  console.log("fromToken: ", toToken);
+  console.log("toToken: ", toToken);
 
-  console.log("ROUTER_ADDRESS: ", ROUTER_ADDRESS);
-
-  // Check this in Pool: getTokenAmountOut
   const { error, value } =
    useCall(
         areParamsValid && {
