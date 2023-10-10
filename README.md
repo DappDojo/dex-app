@@ -19,5 +19,11 @@ npm install
 npm run react-app:start
 ```
 
+If you want to start from scratch make sure you install the framework using the following command:
+
+```
+yarn create eth-app my-eth-app
+```
+
 > [!NOTE]
 > This project was based on the work presented in this interesting [tutorial](https://www.youtube.com/watch?v=Y89q6T1r1Yg) by **Javascript Mastery** on YouTube. The original code can be found in this [github repository](https://github.com/adrianhajdin/project_web3_uniswap). To integrate our contracts we fixed the code and added some improvements.
