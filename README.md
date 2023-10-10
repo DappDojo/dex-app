@@ -12,5 +12,12 @@ PoolRouter: [0xDcC0FD6FEC01B50c560eA3E749322F1D9f9C6ec3](https://sepolia.ethersc
 
 PoolFactory: [0xA47B4cC48f77dbC0726Fa12eF15c6dbBaff09c79](https://sepolia.etherscan.io/address/0xA47B4cC48f77dbC0726Fa12eF15c6dbBaff09c79#code)
 
+To run the code execute the following commands:
+
+```
+npm install
+npm run react-app:start
+```
+
 > [!NOTE]
-> This project was based on the work presented in this interesting [tutorial](https://www.youtube.com/watch?v=Y89q6T1r1Yg) by Javascript Mastery on YouTube. The original code can be found in this [github repository](https://github.com/adrianhajdin/project_web3_uniswap). To integrate our contracts we fixed the code and added some improvements.
+> This project was based on the work presented in this interesting [tutorial](https://www.youtube.com/watch?v=Y89q6T1r1Yg) by **Javascript Mastery** on YouTube. The original code can be found in this [github repository](https://github.com/adrianhajdin/project_web3_uniswap). To integrate our contracts we fixed the code and added some improvements.
