@@ -6,7 +6,7 @@ For this web application we implemented the [Usedapp](https://usedapp.io/) frame
 
 An online Web3 example can be found in this [link](https://dappdojo-dex.netlify.app/). The smart contracts were deployed to the Sepolia network.
 
-These are smart contract addresses:
+These are the smart contract addresses:
 
 PoolRouter: [0xDcC0FD6FEC01B50c560eA3E749322F1D9f9C6ec3](https://sepolia.etherscan.io/address/0xDcC0FD6FEC01B50c560eA3E749322F1D9f9C6ec3#code)
 
